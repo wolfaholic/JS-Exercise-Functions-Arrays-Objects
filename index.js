@@ -76,8 +76,15 @@ function getName(object) {
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
 function makeSmartPerson(name) {
- 
- 
+  return {
+    name: name,
+    sum(num, num2) {
+      return num + num2;
+    },
+    speak(){
+      return `Hello, my name is ${name}`;
+    }
+  };
 }
 
 
