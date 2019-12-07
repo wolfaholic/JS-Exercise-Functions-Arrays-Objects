@@ -192,8 +192,8 @@ function getCarInfoById(array, id) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(inventory) {
+  return inventory.sort((a, b) => (a.car_model > b.car_model ? 1 : -1));
 }
 
 /**
@@ -205,8 +205,12 @@ function sortCarInventory(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(inventory) {
+  const result = [];
+  for (let i = 0; i < inventory.length; i++) {
+    result.push(inventory[i].car_year);
+  }
+  return result;
 }
 
 /**
@@ -221,9 +225,15 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
-}
+  function getOlderCars(inventory, max) {
+    const result = [];
+    for (let i = 0; i < inventory.length; i++) {
+      if (inventory[i].car_year <= max) {
+        result.push(inventory[i]);
+      }
+    }
+    return result;
+  }
 
 /**
  * ### Challenge `getGermanCars`
@@ -265,9 +275,9 @@ function getGermanCars(inventory) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = a => b => a + b; 
+const addFive = a => a + 5;  
+const argTimesTwo = a => a * 2;  
 
 /**
  * ### Challenge `carMaker`
@@ -282,8 +292,14 @@ const argTimesTwo = null; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(num) {
+  return {
+    odometer: num,
+    drive: function(distance) {
+      this.odometer = this.odometer + distance;
+      return this.odometer;
+    }
+  };
 }
 
 /// ////// END OF CHALLENGE /////////
